@@ -1,0 +1,31 @@
+{
+  "name": "code_deploy_deployments_infra",
+  "version": "0.1.0",
+  "bin": {
+    "code_deploy_deployments_infra": "bin/code_deploy_deployments_infra.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk",
+    "ecs:synth": "ECS=1 npm run build && ECS=1 npm run cdk synth",
+    "ec2:synth": "EC2=1 npm run build && EC2=1 npm run cdk synth",
+    "ec2:deploy": "EC2=1 npm run cdk synth && EC2=1 npm run cdk deploy",
+    "ec2:create-deployment": "npx ts-node scripts/create_ec2_deployment.ts"
+  },
+  "devDependencies": {
+    "@aws-sdk/client-codedeploy": "^3.338.0",
+    "@types/jest": "^29.5.4",
+    "@types/node": "20.5.3",
+    "jest": "^29.6.3",
+    "ts-jest": "^29.1.1",
+    "aws-cdk": "2.93.0",
+    "ts-node": "^10.9.1",
+    "typescript": "~5.1.6"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "2.93.0",
+    "constructs": "^10.0.0"
+  }
+}
